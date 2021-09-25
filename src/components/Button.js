@@ -4,23 +4,23 @@ import { darken, lighten } from "polished";
 
 const colorStyled = css`
   ${({ theme, color }) => {
-    const seleter = theme.palette[color];
+    const selector = theme.palette[color];
     return css`
-      background: ${seleter};
+      background: ${selector};
       &:hover {
-        background: ${lighten(0.2, seleter)};
+        background: ${lighten(0.2, selector)};
       }
       &:active {
-        background: ${darken(0.2, seleter)};
+        background: ${darken(0.2, selector)};
       }
       ${(props) =>
         props.outline &&
         css`
-          border: 1px solid ${seleter};
+          border: 1px solid ${selector};
           background: none;
-          color: ${seleter};
+          color: ${selector};
           &:hover {
-            background: ${seleter};
+            background: ${selector};
             color: white;
           }
         `}

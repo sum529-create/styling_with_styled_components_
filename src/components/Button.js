@@ -28,6 +28,19 @@ const colorStyled = css`
   }}
 `;
 
+const fullWidthStyle = css`
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      width: 100%;
+      justify-content: center;
+      & + & {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    `}
+`;
+
 const sizes = {
   large: {
     height: "3rem",
@@ -67,16 +80,23 @@ const ButtonStyled = styled.button`
 
   /* 색상 */
   ${colorStyled}
-
+  
   /* 기타 */
-    & + & {
+  & + & {
     margin-left: 1rem;
   }
+  ${fullWidthStyle}// 위 코드 밑에 위치해야 적용이 됨
 `;
 
-function Button({ children, color, size, outline, ...rest }) {
+function Button({ children, color, size, outline, fullWidth, ...rest }) {
   return (
-    <ButtonStyled color={color} size={size} outline={outline} {...rest}>
+    <ButtonStyled
+      color={color}
+      size={size}
+      outline={outline}
+      fullWidth={fullWidth}
+      {...rest}
+    >
       {children}
     </ButtonStyled>
   );
